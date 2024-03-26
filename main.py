@@ -13,3 +13,8 @@ def read_index(request:Request):
 def read_index(request:Request):
     return templates.TemplateResponse(request=request,
     name="about.html")
+
+@app.get("/form_data.html")
+def read_index(request:Request):
+    return templates.TemplateResponse(request=request,
+    name="form_data.html")

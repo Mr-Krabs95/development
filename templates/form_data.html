@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Форма для профиля</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+        <!-- Навигационная панель Bootstrap -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.html">Сайт знакомств</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html">Профиль</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Поиск</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Сообщения</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Выход</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+
+  <div class="container mt-5">
+    <form id="profileForm">
+      <div class="form-group">
+        <label for="name">Имя:</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="age">Возраст:</label>
+        <input type="number" class="form-control" id="age" name="age" required>
+      </div>
+      <div class="form-group">
+        <label for="gender">Пол:</label>
+        <select class="form-control" id="gender" name="gender" required>
+          <option value="">Выберите пол</option>
+          <option value="male">Мужской</option>
+          <option value="female">Женский</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Пароль:</label>
+        <div class="input-group">
+          <input type="password" class="form-control" id="password" name="password" required>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="togglePassword">Показать</button>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+  </div>
+
+  <!-- JavaScript скрипт -->
+  <script>
+    document.getElementById('profileForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Предотвращаем стандартное поведение формы
+
+      // Получаем значения из формы
+      let name = document.getElementById('name').value;
+      let age = document.getElementById('age').value;
+      let gender = document.getElementById('gender').value;
+      let email = document.getElementById('email').value;
+      let password = document.getElementById('password').value;
+
+      // Проверяем корректность ввода возраста (должен быть числом больше 0)
+      if (isNaN(age) || age <= 0) {
+        alert('Пожалуйста, введите корректный возраст.');
+        return;
+      }
+
+      // Проверяем корректность ввода email
+      let emailRegex = /^\S+@\S+\.\S+$/;
+      if (!emailRegex.test(email)) {
+        alert('Пожалуйста, введите корректный email.');
+        return;
+      }
+
+      // Выводим значения в консоль
+      console.log('Name:', name);
+      console.log('Age:', age);
+      console.log('Gender:', gender);
+      console.log('Email:', email);
+      console.log('Password:', password);
+    });
+
+    // Функция для показа/скрытия пароля
+    document.getElementById('togglePassword').addEventListener('click', function() {
+      let passwordInput = document.getElementById('password');
+      let button = document.getElementById('togglePassword');
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        button.textContent = 'Скрыть';
+      } else {
+        passwordInput.type = 'password';
+        button.textContent = 'Показать';
+      }
+    });
+  </script>
+
+  <!-- Подключение скриптов Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
