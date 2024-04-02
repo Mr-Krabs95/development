@@ -1,50 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сайт знакомств</title>
+    <title>Инженерная Компания Сибири</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Дополнительные стили здесь */
+    </style>
 </head>
 <body>
     <!-- Навигационная панель Bootstrap -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index.html">Сайт знакомств</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Инженерная Компания Сибири</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">О нас</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#services">Услуги</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#projects">Проекты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Контакты</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="about.html">Профиль</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Поиск</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Сообщения</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Выход</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+    <!-- Заголовок и описание организации -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>О нас</h2>
+                    <p>Инженерная Компания Сибири специализируется на проектировании электрических сетей, обеспечивая высококачественные инженерные решения для своих клиентов. Наша команда опытных инженеров работает над решениями, отвечающими самым современным стандартам и технологиям.</p>
+                </div>
+                <!-- Вставьте сюда изображение вашей компании, если есть -->
+            </div>
+        </div>
+    </section>
 
-  <!-- Контент страницы -->
-  <div class="container mt-4">
-    <div class="jumbotron">
-      <h1 class="display-4">Добро пожаловать на сайт знакомств!</h1>
-      <p class="lead">Найдите свою вторую половинку с помощью нашего сайта.</p>
-      <hr class="my-4">
-      <p>Зарегистрируйтесь сейчас и начните поиск.</p>
-      <a class="btn btn-primary btn-lg" href="form_data.html" role="button">Зарегистрироваться</a>
-    </div>
-  </div>
+    <!-- Услуги компании -->
+    <section id="services" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center">Наши услуги</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Проектирование электрических сетей</h3>
+                    <p>Мы предлагаем полный цикл проектирования электрических сетей, начиная от разработки концепции и проектирования до внедрения и поддержки.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Консультации и экспертиза</h3>
+                    <p>Наша команда специалистов готова оказать профессиональные консультации и провести экспертизу вашего проекта.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Техническое обслуживание</h3>
+                    <p>Мы также предоставляем услуги технического обслуживания электрических сетей для обеспечения их бесперебойной работы.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Примеры проектов -->
+    <section id="projects" class="py-5">
+        <div class="container">
+            <h2 class="text-center">Проекты</h2>
+            <!-- Здесь можно добавить примеры ваших проектов -->
+        </div>
+    </section>
+
+
+    <!-- Контактная информация -->
+    <section id="contact" class="py-5">
+      <div class="container">
+          <h2 class="text-center">Контакты</h2>
+          <div class="row">
+              <div class="col-md-6">
+                  <!-- Ваша контактная информация здесь -->
+              </div>
+              <div class="col-md-6">
+                  <!-- Форма обратной связи -->
+                  <form id="contactForm">
+                      <div class="form-group">
+                          <input type="text" class="form-control" name="name" placeholder="Ваше имя" required>
+                      </div>
+                      <div class="form-group">
+                          <input type="email" class="form-control" name="email" placeholder="Ваш Email" required>
+                      </div>
+                      <div class="form-group">
+                          <textarea class="form-control" name="message" placeholder="Ваше сообщение" rows="5" required></textarea>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Отправить</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </section>
+
+    <!-- JavaScript скрипт для отправки данных на сервер -->
+    <script>
+      document.getElementById('contactForm').addEventListener('submit', function(event) {
+          event.preventDefault(); // Предотвращаем стандартное поведение формы
+
+          // Получаем значения из формы
+          var formData = new FormData(this);
+
+          // Отправляем данные на сервер
+          fetch('/submit-form', {
+              method: 'POST',
+              body: formData
+          })
+          .then(response => response.json())
+          .then(data => {
+              console.log('Ответ от сервера:', data);
+              alert('Данные успешно отправлены!');
+          })
+          .catch(error => {
+              console.error('Ошибка:', error);
+              alert('Произошла ошибка. Пожалуйста, попробуйте еще раз.');
+          });
+      });
+  </script>
+
+    <!-- Скрипты Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
