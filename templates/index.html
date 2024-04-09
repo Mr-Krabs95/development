@@ -87,7 +87,7 @@
               </div>
               <div class="col-md-6">
                   <!-- Форма обратной связи -->
-                  <form id="contactForm">
+                  <form id="contactForm" action="/api/submit-form" method="POST">
                       <div class="form-group">
                           <input type="text" class="form-control" name="name" placeholder="Ваше имя" required>
                       </div>
@@ -106,27 +106,37 @@
 
     <!-- JavaScript скрипт для отправки данных на сервер -->
     <script>
-      document.getElementById('contactForm').addEventListener('submit', function(event) {
-          event.preventDefault(); // Предотвращаем стандартное поведение формы
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Предотвращаем стандартное поведение формы
 
           // Получаем значения из формы
-          var formData = new FormData(this);
+        var formData = {};
+        var formElements = this.elements;
 
-          // Отправляем данные на сервер
-          fetch('/submit-form', {
-              method: 'POST',
-              body: formData
-          })
-          .then(response => response.json())
-          .then(data => {
-              console.log('Ответ от сервера:', data);
-              alert('Данные успешно отправлены!');
-          })
-          .catch(error => {
-              console.error('Ошибка:', error);
-              alert('Произошла ошибка. Пожалуйста, попробуйте еще раз.');
-          });
-      });
+        for (var i = 0; i < formElements.length; i++) {
+            var element = formElements[i];
+            if (element.name) {
+                formData[element.name] = element.value;
+            }
+        }
+        // Отправляем данные на сервер
+        fetch('/api/submit-form', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Ответ от сервера:', data);
+            alert('Данные успешно отправлены!');
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+            alert('Произошла ошибка. Пожалуйста, попробуйте еще раз.');
+        });
+            });
   </script>
 
     <!-- Скрипты Bootstrap -->

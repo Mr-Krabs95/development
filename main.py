@@ -1,43 +1,39 @@
-from fastapi import FastAPI, Request
-from fastapi.templating import Jinja2Templates
-from fastapi.responses import JSONResponse
-from pydantic import BaseModel
-from typing import List
+from fastapi import FastAPI
 import json
+from contextlib import asynccontextmanager
+from database import create_db, delete_db
+from routers import router, router_templates
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await delete_db()
+    print("База очищена")
+    await create_db() # await - ждем выполнения асинхронной функции create_db
+    print("База готова к работе")
+    yield
+    print("Выключение")
 
 
-app = FastAPI()
-templates = Jinja2Templates(directory="templates")
+app = FastAPI(lifespan=lifespan)
+app.include_router(router)
+app.include_router(router_templates)
 
-# Модель данных для сообщения от формы
-class Message(BaseModel):
-    name: str
-    email: str
-    message: str
 
-# Функция для записи данных в файл JSON
-def write_to_json(data):
-    with open("messages.json", "a") as file:
-        json.dump(data.dict(), file)
-        file.write("\n")
+# # Функция для записи данных в файл JSON
+# def write_to_json(data):
+#     # Открываем файл JSON для добавления данных
+#     with open("messages.json", "a") as file:
+#         # Генерируем уникальный ID на основе текущего времени
+#         unique_id = str(int(datetime.now().timestamp()))
 
-# Маршрут для обработки данных из формы и записи их в файл JSON
-@app.post("/submit-form")
-async def submit_form(data: Message):
-    write_to_json(data)
-    return JSONResponse(content={"message": "Данные успешно сохранены"}, status_code=200)
+#         # Создаем словарь с уникальным ID и данными из формы
+#         entry = {"id": unique_id, **data.dict()}
 
-@app.get("/index.html")
-def read_index(request:Request):
-    return templates.TemplateResponse(request=request,
-    name="index.html")
+#         # Записываем словарь в файл JSON
+#         json.dump(entry, file)
+#         file.write("\n")
 
-@app.get("/about.html")
-def read_index(request:Request):
-    return templates.TemplateResponse(request=request,
-    name="about.html")
-
-@app.get("/form_data.html")
-def read_index(request:Request):
-    return templates.TemplateResponse(request=request,
-    name="form_data.html")
+# @app.post("/submit-form")
+# async def submit_form(data: Message):
+#     write_to_json(data)
+#     return JSONResponse(content={"message": "Данные успешно сохранены"}, status_code=200)
