@@ -22,7 +22,6 @@ class Model(DeclarativeBase):
 
 class MessagesTable(Model):
     """Модель для хранения отправляемых сообщений из формы"""
-    
     __tablename__ = "messages"
 
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -32,7 +31,6 @@ class MessagesTable(Model):
 
 class UsersTable(Model):
     """Модель для хранения информации о пользователях"""
-    
     __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
